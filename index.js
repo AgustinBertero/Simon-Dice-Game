@@ -46,6 +46,7 @@ function manejarRonda(){
     ronda++; //Aumento en 1 la ronda
     actualizarNumeroRonda(ronda); //Actualiza el numero
 }
+
 function manejarInputUsuario(e) { //Esta funcion toma una parametro e (evento). El navegador cada vez que ejecuta un event handler le pasa un evento como parametro a la funcion
     const $cuadro = e.target; //e.target indica a que elemento(cuadro) le hicimos click . Lo guardamos en $cuadro
     resaltar($cuadro); //Resaltamos. Cada vez que el usuario presione un cuadro , tenemos que comparar con la secuencia de la maquina
@@ -63,6 +64,7 @@ function manejarInputUsuario(e) { //Esta funcion toma una parametro e (evento). 
         setTimeout(manejarRonda, 1000); //Juega una nueva ronda
     }
 }
+
 function obtenerCuadroAleatorio(){
 const $cuadros = document.querySelectorAll('.cuadro'); //$cuadros es todo los elementos de clase .cuadro
 const indice = Math.floor(Math.random() * $cuadros.length); //Genero un numero aleatorio entre la cantidad de cuadros , para que se ilumine un cuadrado aleatorio. Con math floor redondeo el numerom para abajo
