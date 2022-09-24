@@ -46,3 +46,20 @@ function manejarRonda(){
     ronda++; //Aumento en 1 la ronda
     actualizarNumeroRonda(ronda); //Actualiza el numero
 }
+function manejarInputUsuario(e) { //Esta funcion toma una parametro e (evento). El navegador cada vez que ejecuta un event handler le pasa un evento como parametro a la funcion
+    const $cuadro = e.target; //e.target indica a que elemento(cuadro) le hicimos click . Lo guardamos en $cuadro
+    resaltar($cuadro); //Resaltamos. Cada vez que el usuario presione un cuadro , tenemos que comparar con la secuencia de la maquina
+    secuenciaUsuario.push($cuadro); //agrego 1 a la secuencia del usuario
+
+    const $cuadroMaquina = secuenciaMaquina[secuenciaUsuario.length - 1]; //Voy comparando el cuadro de la maquina con el que presiono el usuario
+
+    if ($cuadro.id !== $cuadroMaquina.id){ //Comparo con la secuenciaMaquina(en la posicion o indice de la secuencia del usuario -1)
+        perder(); //Si el id  del cuadro elegido por el usuario es distinto al de la secuenciaMaquina en la misma posicion ejecuto la funcion perder()
+        return;
+    }
+
+    if ( secuenciaUsuario.length === secuenciaMaquina.length){ //Si la longitud de la secuencia del usuario es igual a la longitud de la secuencia de la maquina, el usuario le pego a toda la secuencia
+        bloquearInputUsuario();
+        setTimeout(manejarRonda, 1000); //Juega una nueva ronda
+    }
+}
