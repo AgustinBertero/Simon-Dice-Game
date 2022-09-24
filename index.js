@@ -97,6 +97,14 @@ function desbloquearInputUsuario(){ //Permite jugar al usuario
     });    
 }
 
+function resaltar($cuadro){ //Toma como parametro un elemento $cuadro y le setea la opacidad y 500 ms despues le setea la opacidad a 0.5
+    $cuadro.style.opacity = 1; //La opacidad por defecto es 0.5 en css y con una transicion de 0.5 seg
+    setTimeout(function() {
+        $cuadro.style.opacity = 0.5;
+    }, 500); //Le doy 500 ms de transicion
+    
+}
+
 function perder(){
     bloquearInputUsuario(); //Impido que siga jugando
     reiniciarEstado();
