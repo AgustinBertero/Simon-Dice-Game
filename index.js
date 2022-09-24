@@ -9,3 +9,14 @@ actualizarNumeroRonda('-'); //Ronda tiene un guion = Ronda 0
 bloquearInputUsuario(); //No dejo a presionar al usuario
 
 
+function comenzarJuego() {
+    reiniciarEstado();
+    manejarRonda();
+}
+
+function reiniciarEstado(){
+    secuenciaMaquina = []; //Reinicia la secuencia de la maquina
+    secuenciaUsuario = []; //Reinicio la secuencia del usuario
+    ronda = 0; //Vuelvo la ronda a 0
+}
+
