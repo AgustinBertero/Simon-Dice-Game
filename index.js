@@ -20,3 +20,29 @@ function reiniciarEstado(){
     ronda = 0; //Vuelvo la ronda a 0
 }
 
+function manejarRonda(){
+    actualizarEstado('Turno de la Maquina');
+    bloquearInputUsuario(); //Evita que el usuario pueda seguir tocando
+
+    const $nuevoCuadro = obtenerCuadroAleatorio(); //Ilumino cuadro aleatorio
+    secuenciaMaquina.push($nuevoCuadro);//Agrego el nuevo cuadro a la secuencia de la maquina 
+
+    const RETRASO_TURNO_JUGADOR = (secuenciaMaquina.length + 1) * 1000; //Tiempo de espera para que juegue el jugador
+    //Se multiplica por 1000 porque lo toma setTimeout como segundo parametro son milisegundos
+
+    secuenciaMaquina.forEach(function($cuadro, index) { 
+        const RETRASO_MS = (index + 1 ) * 1000; //Retrasa cada cuadro para darle tiempo al jugador de ver el cuadro resaltado
+        setTimeout(function() {
+            resaltar($cuadro); 
+        } , RETRASO_MS);
+    });
+
+    setTimeout(function() { 
+        actualizarEstado('Turno del jugador');//Aviso al jugador que le toca jugar
+        desbloquearInputUsuario();
+    }, RETRASO_TURNO_JUGADOR );
+
+    secuenciaUsuario = []; //En cada ronda resetea la secuencia del usuario para que pueda hacer toda la secuencia de vuelta
+    ronda++; //Aumento en 1 la ronda
+    actualizarNumeroRonda(ronda); //Actualiza el numero
+}
