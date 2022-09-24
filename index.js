@@ -73,3 +73,20 @@ function actualizarNumeroRonda(ronda){ //Agarra el elemento con ID #ronda y le c
     document.querySelector('#ronda').textContent = ronda;
 }
 
+function actualizarEstado(estado,error = false){ //Actualiza el estado del juego y turnos. El segundo parametro por default es falso
+    const $estado = document.querySelector('#estado');
+    $estado.textContent = estado;
+    if(error){ //Si error es true 
+        $estado.classList.remove('alert-primary');  //Estos estilos son de Bootstrap
+        $estado.classList.add('alert-danger'); // Agrego esta clase
+    } else { // Si no hay error
+        $estado.classList.remove('alert-danger');
+        $estado.classList.add('alert-primary');
+        }
+}
+
+function perder(){
+    bloquearInputUsuario(); //Impido que siga jugando
+    reiniciarEstado();
+    actualizarEstado('Perdiste! Toca "Empezar" para jugar de nuevo!', true)
+}
