@@ -85,6 +85,18 @@ function actualizarEstado(estado,error = false){ //Actualiza el estado del juego
         }
 }
 
+function bloquearInputUsuario(){
+    document.querySelectorAll('.cuadro').forEach(function($cuadro){ //Agarra cada class cuadro y se ejecuta la funcion, cuando le hagan click al cuadro se ejecuta una funcion vacia  
+        $cuadro.onclick = function(){}; //Esta bloqueado el input del usuario cuando es el turno de la maquina, el evento onclick espera una funcion . Le pasamos una vacia para bloquear al usuario
+    });
+}
+
+function desbloquearInputUsuario(){ //Permite jugar al usuario
+    document.querySelectorAll('.cuadro').forEach(function($cuadro){
+      $cuadro.onclick = manejarInputUsuario; //Por cada elemento de clase cuadro, cuando le hagan click al cuadro se ejecuta la funcion Manejar input usuario 
+    });    
+}
+
 function perder(){
     bloquearInputUsuario(); //Impido que siga jugando
     reiniciarEstado();
