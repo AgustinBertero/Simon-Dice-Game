@@ -63,3 +63,13 @@ function manejarInputUsuario(e) { //Esta funcion toma una parametro e (evento). 
         setTimeout(manejarRonda, 1000); //Juega una nueva ronda
     }
 }
+function obtenerCuadroAleatorio(){
+const $cuadros = document.querySelectorAll('.cuadro'); //$cuadros es todo los elementos de clase .cuadro
+const indice = Math.floor(Math.random() * $cuadros.length); //Genero un numero aleatorio entre la cantidad de cuadros , para que se ilumine un cuadrado aleatorio. Con math floor redondeo el numerom para abajo
+return $cuadros[indice]; //Devuelve el cuadro con un indice aleatorio (del 1 al 4), que me da el proximo color
+}
+
+function actualizarNumeroRonda(ronda){ //Agarra el elemento con ID #ronda y le cambia el texto y le pone el numero que le pasamos 
+    document.querySelector('#ronda').textContent = ronda;
+}
+
