@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simon Dice</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@700&display=swap" rel="stylesheet">
     <style type="text/css" >
         
 .cuadro {
-    height: 200px;
+    grid-template-columns: 2;
+    height: 15rem;
     opacity: 0.5;
     transition: opacity 500ms;
 }
@@ -27,13 +31,55 @@
     background-color: green;
 }
 
+.cuadro {
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+#tablero {
+    display: grid; 
+    grid-template-columns: 15rem 15rem;
+    justify-content: center;
+}
+
+body {
+    background-color: lightgrey;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.mensaje {
+    text-align: center;
+    padding: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding-top: 1rem;
+}
+
+footer a {
+    color: blue;
+}
+
+header {
+    text-align: center;
+    font-weight: 1000;
+    font-size: 2rem;
+}
+
+.btn {
+    cursor: pointer;
+}
+
     </style>
 </head>
 
 <body>
+
+    <header>Simon Dice !</header>
     
-    <div class="container">
-        <div class="row">
+    <div class="container mensaje">
+        <div class="row row-cols-2">
             <div class="col-sm-8">
                 <div class="alert alert-primary" role="alert" id="estado"><!-- --></div>
             </div>
@@ -49,23 +95,27 @@
     <div class="container" id="tablero">
         <div class="row">
             <div class="col-sm">
-                <div id="cuadro-1" class="cuadro">A</div>
+                <div id="cuadro-1" class="cuadro"></div>
             </div>
             <div class="col-sm">
-                <div id="cuadro-2" class="cuadro">B</div>
+                <div id="cuadro-2" class="cuadro"></div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm">
-                <div id="cuadro-3" class="cuadro">C</div>
+                <div id="cuadro-3" class="cuadro"></div>
             </div>
             <div class="col-sm">
-                <div id="cuadro-4" class="cuadro">D</div>
+                <div id="cuadro-4" class="cuadro"></div>
             </div>
         </div>
     </div>
 
+
+    <footer>Desarrollado por <a href="https://github.com/AgustinBertero">Agustin Bertero</a>  - © Todos los derechos reservados  </footer>
+
 <script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>
